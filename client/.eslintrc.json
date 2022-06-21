@@ -1,0 +1,59 @@
+{
+	"env": {
+			"browser": true,
+			"node": true,
+			"es2021": true
+	},
+	"extends": [
+			"eslint:recommended"
+	],
+	"parserOptions": {
+			"ecmaFeatures": {
+			"jsx": true
+			},
+			"ecmaVersion": 12,
+			"sourceType": "module"
+	},
+	"plugins": [],
+  "rules": {
+		"no-unused-vars": 0,
+		    "react/prop-types": 0,
+    "react/display-name": 0,
+    "react/react-in-jsx-scope": 0,
+    "no-mixed-spaces-and-tabs": 0,
+    "brace-style": ["warn", "allman"],
+    "indent": ["warn", "tab", {
+      "ObjectExpression": "off"
+    }],
+    "newline-per-chained-call": ["warn", {
+      "ignoreChainWithDepth": 3
+    }],
+    "no-multiple-empty-lines": "warn",
+    "no-trailing-spaces": "warn",
+    "padding-line-between-statements": ["warn", {
+      "blankLine": "always",
+      "prev": ["const", "let", "var", "block-like", "if"],
+      "next": "*"
+    }, {
+      "blankLine": "any",
+      "prev": ["const", "let", "var"],
+      "next": ["const", "let", "var"]
+    }],
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "double"],
+    "jsx-quotes": ["warn", "prefer-double"],
+    "semi-style": ["warn", "last"],
+    "object-curly-newline": ["warn", {
+      "multiline": true
+    }],
+    "curly": ["error", "multi-or-nest", "consistent"],
+    "space-before-function-paren": ["error", "never"],
+    "keyword-spacing": ["error", {
+      "overrides": {
+        "if": {
+          "after": false
+        }
+      }
+    }]
+  }
+}

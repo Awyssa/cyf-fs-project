@@ -1,0 +1,22 @@
+{
+	"env": {
+			"browser": true,
+			"node": true,
+			"es2021": true
+	},
+	"extends": [
+			"eslint:recommended"
+	],
+	"parserOptions": {
+			"ecmaFeatures": {
+			"jsx": true
+			},
+			"ecmaVersion": 12,
+			"sourceType": "module"
+	},
+	"plugins": [],
+	"rules": {
+	"react-hooks/exhaustive-deps": 0,
+	"no-unused-vars": 0
+	}
+}
