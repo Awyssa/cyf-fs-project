@@ -20,12 +20,6 @@ const Form = ({ formData, setFormData, handleSubmit, style }) =>
 					placeholder={fromField[0]}
 					value={fromField[1]}
 					handleChange={(event) => handleChange(fromField[0], event.target.value)}
-					style={{
-						padding: "6px",
-						margin: "5px",
-						borderRadius: "10px",
-						border: "1px solid black"
-					}}
 				/>
 			))}
 		</div>

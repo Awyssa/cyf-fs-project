@@ -37,7 +37,6 @@ const Homepage = () =>
 
 	const handleSearch = (search) =>
 	{
-		console.log("search ===", search);
 		setFilter(search);
 		const filteredArray = videoData.filter(val => val.title.toLowerCase().includes(search.toLowerCase()));
 
@@ -51,14 +50,20 @@ const Homepage = () =>
 		<div style={{
 			display: "flex",
 			flexDirection: "column",
-			justifyContent: "center",
-			padding: "10px"
+			alignItems: "center",
 		}}>
-			<div style={{ display: "flex", flexDirection:"column",  justifyContent: "center" }}>
+			<div style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				maxWidth: "1200px"
+			}}>
 				<h1>Michael's videos</h1>
+				<p>Search for video</p>
 				<Input
 					value={filter || ""}
 					handleChange={(event) => handleSearch(event.target.value)}
+					style={{ width: "300px"}}
 				/>
 				<AddVideo />
 				<div style={{

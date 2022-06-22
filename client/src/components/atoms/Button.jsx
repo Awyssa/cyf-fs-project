@@ -1,22 +1,21 @@
 import React from "react";
 
-const Button = ({ text, handleClick, danger }) =>
-{
-	return (
-		<button
-			style={{
+const Button = ({ text, handleClick, danger, disabled }) => (
+	<button
+		style={{
 			backgroundColor: !danger ? "green" : "red",
 			color: "white",
-			border: "1px solid gray",
-			borderRadius: "10px",
-			fontWeight: "700",
-			width: "150px"
-			}}
-			onClick={handleClick}
-		>
-			{text}
-		</button>
-	);
-};
+			border: "transparent",
+			borderRadius: "5px",
+			height: "30px",
+			width: "120px",
+			opacity: disabled ? "0.2" : "1"
+		}}
+		disabled={disabled}
+		onClick={handleClick}
+	>
+		{text}
+	</button>
+);
 
 export default Button;

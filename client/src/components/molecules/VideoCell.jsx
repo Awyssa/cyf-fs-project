@@ -6,21 +6,42 @@ const VideoCell = ({ id, title, url, rating, onDelete }) =>
 	const [votes, setVotes] = useState(rating);
 
 	return (
-		<div style={{ padding: "50px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-			<h3 style={{ maxWidth: "500px", overflow: "hidden", whiteSpace: "noWrap", textOverflow: "ellipsis" }}>{title}</h3>
-			<div style={{ display: "flex" }}>
-				<Button text="Up Vote" handleClick={() => setVotes(votes + 1)}/>
-				<div style={{ padding: "15px" }}>{votes}</div>
-				<Button danger text="Down Vote" handleClick={() => setVotes(votes - 1)}/>
+		<div style={{
+			display: "flex",
+			flexDirection: "column",
+			alignItems: "center",
+			maxWidth: "300px",
+			margin: "10px"
+		}}>
+
+			<p style={{
+				overflow:"hidden",
+				whiteSpace:"noWrap",
+				textOverflow:"ellipsis",
+				width: "80%",
+				textAlign: "center"
+			}}>{title}</p>
+
+			<div style={{
+				display: "flex",
+				justifyContent: "space-between",
+				alignItems: "center",
+				width: "100%"
+			}}>
+				<Button text="Up Vote" handleClick={() => setVotes(votes + 1)} />
+				<p>{votes}</p>
+				<Button danger text="Down Vote" handleClick={() => setVotes(votes - 1)} />
 			</div>
+
 			<iframe
-				width="500"
-				height="300"
+				width="300"
+				height="150"
 				src={url}
 				title="YouTube video player"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			></iframe>
-			<Button danger text="Delete" handleClick={() => onDelete(id)}/>
+
+			<Button danger text="Delete" handleClick={() => onDelete(id)} width="300px" />
 		</div>
 	);
 };

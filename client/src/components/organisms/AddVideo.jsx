@@ -1,34 +1,48 @@
 import React, { useState } from "react";
+import { Button } from "../atoms";
 import { Form } from "../molecules";
 
 const AddVideo = () =>
 {
+	const [error, setError] = useState(null);
 	const [form, setForm] = useState({
-    id: "",
     title: "",
     url: "",
-    rating: ""
 	});
 
-	const handleSubmit = (event) =>
+	const handleSubmit = async(event) =>
 	{
 		event.preventDefault();
-		// post form here
+		setError(null);
+
+		try
+		{
+			const res = await fetch("/api/addVideo",
+				{
+					method: "POST",
+					headers: {"Content-Type": "application/json"},
+					body: JSON.stringify(form)
+				});
+		}
+		catch (error)
+		{
+			console.log("Error", error);
+			setError(error);
+		}
 	};
 
 	return (
-		<div>
-			<div>Add Video</div>
+		<div style={{ marginTop: "20px", textAlign: "center" }}>
+			<div>Add a new video</div>
 			<Form
 				formData={form}
 				setFormData={setForm}
-				style={{
-					width: "200px",
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center"
-				}}
 			/>
+			<Button
+				disabled={form.title?.length < 3 || form.url?.length < 3}
+				handleClick={handleSubmit}
+				text="Add Video" />
+			{ error ? <p>{error}</p> : null }
 		</div>
 	);
 };

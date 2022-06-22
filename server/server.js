@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 const videoData = require("./exampleresponse.json")
+const _ = require("lowdash")
 
 let videos = videoData
 
@@ -32,9 +33,23 @@ app.get("/", (req, res) =>
 {
 	const videoBody = req.body
 
-	console.log("got got a req body", videoBody)
+	try
+	{
+		videos.push({
+			id: videos[videos.length - 1].id + 1,
+			title: videoBody.title,
+			url: videoBody.url,
+			rating: 0
+		})
+	}
+	catch(error)
+	{
+		res.status(400)
+		res.send(`video wasn't added. Error: ${err}`)
+	}
 
-	res.end()
+	res.status(200)
+	res.send("video added!")
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
